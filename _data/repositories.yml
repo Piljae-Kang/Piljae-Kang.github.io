@@ -1,0 +1,18 @@
+description: "List of repositories."
+
+users:
+  - username: "Piljae-Kang"
+    title: "GitHub Repositories"
+    repositories:
+      - name: "Real-time-depth-fusion-Directional-TSDF"
+        owner: "Piljae-Kang"
+        description: "CUDA 기반 실시간 TSDF 3D 복원 및 레이캐스팅 렌더링 시스템."
+        language: "Cuda / C++"
+        stars: 0
+        forks: 0
+      - name: "Mirror-Reflection-remover"
+        owner: "Piljae-Kang"
+        description: "거울 반사 성분 제거 실험 저장소 (Python/MATLAB)."
+        language: "Python / MATLAB"
+        stars: 0
+        forks: 0

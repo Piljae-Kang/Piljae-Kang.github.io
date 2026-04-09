@@ -1,0 +1,93 @@
+basics:
+  name: "Piljae Kang"
+  label: "Ph.D. Student"
+  email: "kangpiljae@gmail.com"
+  url: "https://Piljae-Kang.github.io"
+  website: "https://Piljae-Kang.github.io"
+  location:
+    city: "Seoul"
+    countryCode: "KR"
+  summary: "Ph.D. student in Computer Science at Sogang University, working on 3D vision, structured light, and real-time 3D perception."
+  profiles:
+    - network: "GitHub"
+      username: "Piljae-Kang"
+      url: "https://github.com/Piljae-Kang"
+    - network: "Google Scholar"
+      username: ""
+      url: "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
+
+work: []
+
+presentations: []
+teaching: []
+portfolio: []
+languages: []
+references: []
+
+education:
+  - institution: "Sogang University"
+    area: "Computer Science"
+    studyType: "Ph.D."
+    startDate: "2025-03"
+    endDate: "Present"
+    location: "Seoul, South Korea"
+
+  - institution: "Sogang University"
+    area: "Computer Science"
+    studyType: "M.S."
+    startDate: "2023-03"
+    endDate: "2025-02"
+    location: "Seoul, South Korea"
+
+  - institution: "Sogang University"
+    area: "Physics and Computer Science (double major)"
+    studyType: "B.S."
+    startDate: "2017-03"
+    endDate: "2023-02"
+    location: "Seoul, South Korea"
+
+# 논문 썸네일: images/publications/ 아래 파일을 두고 image 경로를 맞추면 됩니다.
+publications:
+  - name: "Structured Light 3D Scanning under Global Illumination and Mirror Reflections"
+    publisher: "ECCV 2026"
+    status: "Submitted (under review — not accepted yet)"
+    releaseDate: "2026"
+    summary: "Robust structured-light 3D scanning under global illumination and mirror reflections."
+    image: "/images/publications/eccv2026-teaser.svg"
+
+# 단순 스킬 목록(한 줄로 표시). 카테고리 없이 문자열 배열만 쓰면 됩니다.
+skills:
+  - "C++"
+  - "CUDA"
+  - "PyTorch"
+  - "Python"
+  - "OpenCV"
+  - "Open3D"
+  - "Vulkan"
+
+interests:
+  - name: "Research Interests"
+    keywords:
+      - "Structured Light 3D Scanning"
+      - "RGB-D Reconstruction"
+      - "Real-Time 3D Perception"
+      - "Learning-based 3D Vision"
+
+projects:
+  - name: "Directional TSDF for Real-Time RGB-D Reconstruction"
+    organization: "Hubitz — industry–academia collaboration (with Sogang University)"
+    startDate: "2026"
+    endDate: "Present"
+    description: "Developed a directional TSDF representation to reduce surface sticking artifacts near corners and adjacent structures."
+
+  - name: "Structured Light Scanning under Global Illumination"
+    organization: "Hubitz — industry–academia collaboration (with Sogang University)"
+    startDate: "2025"
+    endDate: "Present"
+    description: "Designed robust pattern decoding and reflection-dominant region removal methods for challenging reflective and scattering surfaces."
+
+  - name: "3D vision & software development (project title TBD)"
+    organization: "LG Electronics — industry–academia collaboration (with Sogang University)"
+    startDate: "2025"
+    endDate: "Present"
+    description: "Industry–academia collaboration on 3D vision and related software development; official project title not yet finalized."
