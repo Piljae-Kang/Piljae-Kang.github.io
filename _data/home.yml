@@ -1,0 +1,14 @@
+# Home page (/) timeline — edit dates & text as needed (newest first after sort).
+news:
+  - date: "2026-03-12"
+    icon: "📃"
+    text: "Submitted a manuscript on structured light 3D scanning under global illumination and mirror reflections; under peer review (not yet accepted at any venue)."
+  - date: "2025-09-01"
+    icon: "🎓"
+    text: "Started the Ph.D. program in Computer Science at Sogang University."
+  - date: "2025-08-19"
+    icon: "🎓"
+    text: "Completed the M.S. in Computer Science at Sogang University."
+  - date: "2023-08-22"
+    icon: "🎓"
+    text: "Completed the B.S. (Physics & Computer Science double major) at Sogang University."

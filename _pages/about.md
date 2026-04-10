@@ -7,19 +7,59 @@ redirect_from:
   - /about.html
 ---
 
-안녕하세요, **Piljae Kang**입니다. 이 사이트는 GitHub Pages + Jekyll(Academic Pages 템플릿) 기반으로 **이력서(CV)와 프로젝트/연구 활동**을 정리합니다.
+{% include base_path %}
 
-Quick links
-======
-- **CV**: [/cv/](/cv/)
-- **Portfolio**: [/portfolio/](/portfolio/)
-- **Publications**: [/publications/](/publications/)
-- **Blog**: [/year-archive/](/year-archive/)
+<div class="home-about__intro" markdown="0">
+  {{ site.data.cv.basics.summary }}
+</div>
 
-요약
-======
-- **관심 분야**: (키워드 3–6개 정도)
-- **현재**: (소속/역할 한 줄)
-- **연락**: 사이드바 이메일/링크 참고
+<div class="home-section">
+  <h2 class="home-section__title">news</h2>
+  {% assign news_sorted = site.data.home.news | sort: "date" | reverse %}
+  <div class="home-timeline">
+    {% for item in news_sorted %}
+    <div class="home-timeline__row">
+      <div class="home-timeline__date">{{ item.date | date: "%b %d, %Y" }}</div>
+      <div class="home-timeline__body">{{ item.icon }} {{ item.text }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
 
+<div class="home-section">
+  <h2 class="home-section__title">education</h2>
+  <div class="home-timeline">
+    {% for edu in site.data.cv.education %}
+    <div class="home-timeline__row">
+      <div class="home-timeline__date">
+        {% assign sd = edu.startDate %}
+        {% assign sd_parts = sd | split: "-" %}
+        {% if sd_parts.size < 3 %}
+          {% assign sd = sd | append: "-01" %}
+        {% endif %}
+        {% if edu.endDate == "Present" %}
+          {{ sd | date: "%b %d, %Y" }} – Present
+        {% else %}
+          {% assign ed = edu.endDate %}
+          {% assign ed_parts = ed | split: "-" %}
+          {% if ed_parts.size < 3 %}
+            {% assign ed = ed | append: "-01" %}
+          {% endif %}
+          {{ sd | date: "%b %d, %Y" }} – {{ ed | date: "%b %d, %Y" }}
+        {% endif %}
+      </div>
+      <div class="home-timeline__body">
+        <strong>{{ edu.studyType }}</strong> in {{ edu.area }}, {{ edu.institution }}.
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
 
+{% if site.publications.size > 0 %}
+<div class="home-section">
+  <h2 class="home-section__title">publications</h2>
+  {% include publications-teaser-list.html %}
+  <p class="home-section__more"><a href="{{ base_path }}/publications/">All publications →</a></p>
+</div>
+{% endif %}

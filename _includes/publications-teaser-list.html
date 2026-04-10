@@ -1,0 +1,32 @@
+{% assign pub_source = include.posts | default: site.publications %}
+<ul class="cv-list pub-teaser-list">
+  {% for post in pub_source reversed %}
+  {% assign pub_teaser = post.header.teaser | default: post.teaser %}
+  <li class="cv-item cv-publication-item">
+    <div class="cv-publication-row">
+      {% if pub_teaser %}
+      <div class="cv-pub-thumb-wrap">
+        {% if pub_teaser contains "://" %}
+        <img class="cv-pub-thumb" src="{{ pub_teaser }}" alt="{{ post.title | strip_html | escape }}">
+        {% else %}
+        <img class="cv-pub-thumb" src="{{ '/images/' | append: pub_teaser | relative_url }}" alt="{{ post.title | strip_html | escape }}">
+        {% endif %}
+      </div>
+      {% endif %}
+      <div class="cv-pub-body">
+        <div class="cv-item-header">
+          <div class="cv-item-title"><a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ post.title }}</a></div>
+          <div class="cv-item-date">{{ post.date | date: "%Y" }}</div>
+        </div>
+        <div class="cv-item-subtitle">{{ post.venue }}</div>
+        {% if post.status %}
+        <div class="cv-pub-status">{{ post.status }}</div>
+        {% endif %}
+        {% if post.excerpt %}
+        <div class="cv-item-detail">{{ post.excerpt | markdownify }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </li>
+  {% endfor %}
+</ul>

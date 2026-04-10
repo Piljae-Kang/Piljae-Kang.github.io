@@ -1,0 +1,66 @@
+/* Shared publication rows (CV, /publications/, home) */
+.cv-container--pub {
+  max-width: 52rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pub-teaser-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cv-publication-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.cv-pub-thumb-wrap {
+  flex: 0 0 auto;
+  width: min(300px, 46vw);
+  max-width: 300px;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cv-pub-thumb {
+  max-width: 100%;
+  max-height: min(320px, 48vh);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 8px;
+  border: 1px solid var(--global-border-color, #d0d7de);
+  display: block;
+  background: color-mix(in srgb, var(--global-bg-color, #fff) 90%, #888);
+}
+
+html[data-theme="dark"] .cv-pub-thumb {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.cv-pub-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.cv-pub-status {
+  display: inline-block;
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--global-text-color-light, #6a737d);
+  font-style: italic;
+}
+
+.pub-teaser-list .cv-item-title {
+  font-size: 1.05rem;
+}
+
+.pub-teaser-list .cv-item {
+  margin-bottom: 1.5rem;
+}

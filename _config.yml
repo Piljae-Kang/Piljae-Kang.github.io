@@ -7,12 +7,12 @@
 # server process.
 
 # Basic Site Settings
-locale                   : "ko-KR"
+locale                   : "en-US"
 site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
 title                    : "Piljae Kang"
 title_separator          : "-"
 name                     : &name "Piljae Kang"
-description              : &description "Piljae Kang 이력서/포트폴리오"   # Update this with a general description of your site, this is the default if not overridden by a page
+description              : &description "Piljae Kang — CV, portfolio, and research"   # Update this with a general description of your site, this is the default if not overridden by a page
 url                      : https://Piljae-Kang.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -26,7 +26,7 @@ author:
   avatar           : "profile.png"
   name             : "Piljae Kang"
   pronouns         : # example: "she/her"  
-  bio              : "이력서/프로젝트/연구 활동을 정리하는 개인 웹사이트입니다."
+  bio              : "Personal website for my CV, projects, and research."
   location         : "Seoul, South Korea"
   employer         : "Sogang University"
   uri              : # URL
@@ -246,7 +246,7 @@ defaults:
       author_profile: true
       read_time: true
       comments: true
-      share: true
+      share: false
       related: true
   # _pages
   - scope:
@@ -262,7 +262,7 @@ defaults:
     values:
       layout: single
       author_profile: true
-      share: true
+      share: false
       comments: true
   # _publications
   - scope:
@@ -271,7 +271,7 @@ defaults:
     values:
       layout: single
       author_profile: true
-      share: true
+      share: false
       comments: true
   # _portfolio
   - scope:
@@ -280,7 +280,7 @@ defaults:
     values:
       layout: single
       author_profile: true
-      share: true
+      share: false
       comment: true
   # _talks
   - scope:
@@ -289,7 +289,7 @@ defaults:
     values:
       layout: talk
       author_profile: true
-      share: true
+      share: false
 
 
 # Sass/SCSS

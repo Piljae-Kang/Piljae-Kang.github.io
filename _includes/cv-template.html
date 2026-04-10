@@ -1,4 +1,5 @@
 {% assign cv = site.data.cv %}
+{% include base_path %}
 
 <style>
   .archive {
@@ -55,6 +56,16 @@
 
   html[data-theme="dark"] .cv-container .cv-section h2 {
     border-bottom-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .cv-container .cv-section h2 .cv-h2-more {
+    font-size: 0.72em;
+    font-weight: 500;
+    margin-left: 0.35rem;
+  }
+
+  .cv-container .cv-section h2 .cv-h2-more a {
+    color: var(--global-text-color-light, #6a737d);
   }
 
   .cv-header h1 {
@@ -119,53 +130,6 @@
     margin: 0;
     line-height: 1.7;
     color: var(--global-text-color);
-  }
-
-  .cv-publication-row {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
-
-  .cv-pub-thumb-wrap {
-    flex: 0 0 auto;
-    width: min(300px, 46vw);
-    max-width: 300px;
-    min-height: 220px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* 잘리지 않게 contain (3x4 고정 프레임 적용 이전과 동일) */
-  .cv-pub-thumb {
-    max-width: 100%;
-    max-height: min(320px, 48vh);
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    object-position: center;
-    border-radius: 8px;
-    border: 1px solid var(--global-border-color, #d0d7de);
-    display: block;
-    background: color-mix(in srgb, var(--global-bg-color, #fff) 90%, #888);
-  }
-
-  html[data-theme="dark"] .cv-pub-thumb {
-    border-color: rgba(255, 255, 255, 0.18);
-  }
-
-  .cv-pub-body {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .cv-pub-status {
-    display: inline-block;
-    margin-top: 0.35rem;
-    font-size: 0.85rem;
-    color: var(--global-text-color-light, #6a737d);
-    font-style: italic;
   }
 </style>
 
@@ -248,7 +212,29 @@
       <li class="cv-item">
         <div class="cv-item-header">
           <div class="cv-item-title">{% if education.studyType %}{{ education.studyType }} in {% endif %}{{ education.area }}</div>
-          <div class="cv-item-date">{% if education.startDate %}{{ education.startDate }}{% endif %}{% if education.endDate %} – {{ education.endDate }}{% endif %}</div>
+          <div class="cv-item-date">
+            {% if education.startDate %}
+              {% assign sd = education.startDate %}
+              {% assign sd_parts = sd | split: "-" %}
+              {% if sd_parts.size < 3 %}
+                {% assign sd = sd | append: "-01" %}
+              {% endif %}
+              {{ sd | date: "%b %d, %Y" }}
+            {% endif %}
+            {% if education.endDate %}
+              {% if education.startDate %} – {% endif %}
+              {% if education.endDate == "Present" %}
+                Present
+              {% else %}
+                {% assign ed = education.endDate %}
+                {% assign ed_parts = ed | split: "-" %}
+                {% if ed_parts.size < 3 %}
+                  {% assign ed = ed | append: "-01" %}
+                {% endif %}
+                {{ ed | date: "%b %d, %Y" }}
+              {% endif %}
+            {% endif %}
+          </div>
         </div>
         <div class="cv-item-content">
           <div class="cv-item-subtitle">{{ education.institution }}</div>
@@ -267,61 +253,32 @@
   </div>
   {% endif %}
 
-  {% if cv.publications.size > 0 %}
-  <!-- Publications -->
+  {% if site.publications.size > 0 %}
+  <!-- Same entries as /publications/ (_publications/) -->
   <div class="cv-section">
-    <h2>Publications</h2>
-    <ul class="cv-list">
-      {% for publication in cv.publications %}
-      <li class="cv-item cv-publication-item">
-        <div class="cv-publication-row">
-          {% if publication.image %}
-          <div class="cv-pub-thumb-wrap">
-            <img class="cv-pub-thumb" src="{{ publication.image | relative_url }}" alt="{{ publication.name | escape }}">
-          </div>
-          {% endif %}
-          <div class="cv-pub-body">
-            <div class="cv-item-header">
-              <div class="cv-item-title">{{ publication.name }}</div>
-              <div class="cv-item-date">{{ publication.releaseDate | slice: 0, 4 }}</div>
-            </div>
-            <div class="cv-item-subtitle">{{ publication.publisher }}</div>
-            {% if publication.status %}
-            <div class="cv-pub-status">{{ publication.status }}</div>
-            {% endif %}
-            {% if publication.summary %}
-            <div class="cv-item-detail">{{ publication.summary }}</div>
-            {% endif %}
-            {% if publication.website %}
-            <div class="cv-item-detail">
-              <a href="{{ publication.website }}" target="_blank" rel="noopener noreferrer">Link</a>
-            </div>
-            {% endif %}
-          </div>
-        </div>
-      </li>
-      {% endfor %}
-    </ul>
+    <h2>Publications <small class="cv-h2-more"><a href="{{ base_path }}/publications/">View all →</a></small></h2>
+    {% include publications-teaser-list.html %}
   </div>
   {% endif %}
 
-  {% if cv.projects.size > 0 %}
-  <!-- Projects -->
+  {% if site.portfolio.size > 0 %}
+  <!-- Same entries as /portfolio/ (_portfolio/) -->
   <div class="cv-section">
-    <h2>Projects</h2>
+    <h2>Projects <small class="cv-h2-more"><a href="{{ base_path }}/portfolio/">Open portfolio →</a></small></h2>
     <ul class="cv-list">
-      {% for project in cv.projects %}
+      {% assign portfolio_sorted = site.portfolio | sort: 'date' | reverse %}
+      {% for post in portfolio_sorted %}
       <li class="cv-item">
         <div class="cv-item-header">
-          <div class="cv-item-title">{{ project.name }}</div>
-          <div class="cv-item-date">{% if project.startDate %}{{ project.startDate }}{% endif %}{% if project.endDate %} – {{ project.endDate }}{% endif %}</div>
+          <div class="cv-item-title"><a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ post.title }}</a></div>
+          <div class="cv-item-date">{% if post.cv_start %}{{ post.cv_start }}{% else %}{{ post.date | date: "%Y" }}{% endif %}{% if post.cv_end %} – {{ post.cv_end }}{% endif %}</div>
         </div>
         <div class="cv-item-content">
-          {% if project.organization %}
-          <div class="cv-item-subtitle">{{ project.organization }}</div>
+          {% if post.role %}
+          <div class="cv-item-subtitle">{{ post.role }}</div>
           {% endif %}
-          {% if project.description %}
-          <div class="cv-item-detail">{{ project.description }}</div>
+          {% if post.excerpt %}
+          <div class="cv-item-detail">{{ post.excerpt | markdownify }}</div>
           {% endif %}
         </div>
       </li>

@@ -42,6 +42,19 @@
           <p> {{ post.type }}, <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif post.collection == 'publications' %}
           <p>Published in <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
+        {% elsif post.collection == 'portfolio' %}
+          {% if post.cv_start or post.cv_end or post.role %}
+          <p class="page__meta">
+            {% if post.cv_start or post.cv_end %}
+              <strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i></strong>
+              {% if post.cv_start %}{{ post.cv_start }}{% endif %}{% if post.cv_end %} – {{ post.cv_end }}{% endif %}
+            {% endif %}
+            {% if post.role %}
+              {% if post.cv_start or post.cv_end %}<br />{% endif %}
+              <em>{{ post.role }}</em>
+            {% endif %}
+          </p>
+          {% endif %}
         {% elsif post.date %}
          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
         {% endif %}

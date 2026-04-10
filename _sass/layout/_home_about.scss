@@ -1,0 +1,58 @@
+/* Home page (/) — news & education timelines */
+.home-about__intro {
+  margin-bottom: 1.5rem;
+  line-height: 1.65;
+}
+
+.home-section {
+  margin-top: 2.25rem;
+}
+
+.home-section__title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 0.85rem 0;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--global-border-color, #d0d7de);
+  color: var(--global-link-color, #52adc8);
+}
+
+html[data-theme="dark"] .home-section__title {
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+.home-timeline__row {
+  display: grid;
+  grid-template-columns: minmax(7.5rem, 9.5rem) 1fr;
+  gap: 0.75rem 1.25rem;
+  margin-bottom: 0.85rem;
+  align-items: baseline;
+}
+
+@media (max-width: 480px) {
+  .home-timeline__row {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+}
+
+.home-timeline__date {
+  font-size: 0.88rem;
+  color: var(--global-text-color-light, #6a737d);
+  font-variant-numeric: tabular-nums;
+}
+
+.home-timeline__body {
+  line-height: 1.55;
+}
+
+.home-section .pub-teaser-list {
+  margin-top: 0.25rem;
+}
+
+.home-section__more {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
